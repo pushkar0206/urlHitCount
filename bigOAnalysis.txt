@@ -1,0 +1,14 @@
+The overall time complexity is O(n log n) where n is the number of entries in input file
+
+The program is divided into following steps:
+1) Read input from file, and store it in a vector where every entry is a timestamp and url
+2) Sort the vector in the increasing order of timestamps, where time complexity is 0(n log n) for this step
+3) After that, process the entries in 0(n), and for every entries that belong to the same day, store that in a map
+4) key for map is the url, and the value is the hit count
+5) Process this map daily, by iterating through all the map entries, and store them in a max heap (priority_queue)
+6) Every insertion/deletion in heap is log n. So for n entries, this step incurs nlogn time complexity
+7) The entries in heap are sorted based on the hit count (first), and if the hit count is same, then the url is sorted in lexicographical order
+8) Finally, the entries are removed one by one and printed.
+
+The time complexity can be broken down as  o(n) (Step 1) + O(n log n) (Step 2) + O(n) (Step 3) + 0(n log n) (Step 5) + O(n log n) (Step 8) 
+which results in the overall complexity of 0(n log n)

@@ -1,0 +1,18 @@
+The overall time complexity is O(n log n) where n is the number of entries in input file
+
+The program is divided into following steps:
+1) Read the input from file, one line at a time, and store it in a map of daily timestamp to another map. 
+The second map is a mapping of URL to hit counts. Since the cardinality of hit count values and the number 
+of days are much smaller than the number of unique URLs, the two stage map is an optimization. Also, the entire file
+is not read into memory.
+The time complexity of this step is O(n).
+2) This map is then iterated and for every daily entry, the secondary map entries are converted into a max heap 
+based on the hit counts. The time complexity of this step is 0(nlogn).
+3) These entries are then sorted based on the daily timestamp value. Time complexity is 0(nlogn)
+4) These entries are iterated for every heap, and printed in the descending order of hit count. 
+The time complexity is 0(nlogn).
+
+Thus the overall time complexity is 0(n) (step 1) + 0(nlogn) (step 2) + 0(nlogn) (step 3) + 0(nlogn) (step 4) 
+which is 0(nlogn)
+
+
